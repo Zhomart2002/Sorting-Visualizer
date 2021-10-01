@@ -1,0 +1,14 @@
+html,
+body, 
+#root{
+    min-width: 1280px;
+    min-height: 705px;
+    padding: 0;
+    margin: 0;
+    height: 99.5%;
+}
+
+.App{
+    position: relative;
+    height: 100%;
+}
