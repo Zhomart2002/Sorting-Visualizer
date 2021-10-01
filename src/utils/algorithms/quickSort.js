@@ -10,42 +10,52 @@ import {
 
 import { ARRAY_FOR_SORTING, DisEnAbleElements} from "../sortUtils";
 
-export default function quickSort(lines){
-    quickSortImpl(lines, 0, lines.length-1);
+export default async function quickSort(lines){
+    DisEnAbleElements();
+    await quickSortImpl(lines, 0, lines.length-1);
+    DisEnAbleElements();
 }
 
-async function quickSortImpl(lines, begin, end){
-	if (begin >= end) {
-        if (begin === end)
-            setLinesColorAsync(lines, [end], SORTED_COLOR);
+async function quickSortImpl(lines, low, high){
+	if (low >= high) {
+        if (low === high)
+            setLinesColorAsync(lines, [high], SORTED_COLOR);
         return;
     }
 
-    const start = begin;
+    const pi = await partition(lines, low, high);
+
+    await quickSortImpl(lines, low, pi-1);
+    await quickSortImpl(lines, pi+1, high);
+}
+
+async function partition(lines, low, high){
+    const pivot = ARRAY_FOR_SORTING[high];
+    setLinesColorAsync(lines, [high], PIVOT_COLOR, 0); // pivot
     
-    const pivot = ARRAY_FOR_SORTING[end];
-    setLinesColorAsync(lines, [end], PIVOT_COLOR, 0); // pivot
+    let bound = low;
+    await setLinesColorAsync(lines, [low], COMPARE_COLOR); // bound
 
-    let bound = begin;
-    await setLinesColorAsync(lines, [begin], COMPARE_COLOR); // bound
+    for(let j = low; j < high; j++){
+        await setLinesColorAsync(lines, [j], COMPARE_COLOR);
+        if (pivot >= ARRAY_FOR_SORTING[j]){
+            swapArr(ARRAY_FOR_SORTING, bound, j);
+            await swapHeightLines(lines, bound, j);
 
-    while(begin < end){
-        await setLinesColorAsync(lines, [begin], COMPARE_COLOR);
-        if (pivot >= ARRAY_FOR_SORTING[begin]){
-            swapArr(ARRAY_FOR_SORTING, bound++, begin);
-            await swapHeightLines(lines, bound-1, begin);
-            setLinesColorAsync(lines, [bound-1], PRIMARY_COLOR, 0);
+            setLinesColorAsync(lines, [bound], PRIMARY_COLOR, 0);
+            bound++;
             setLinesColorAsync(lines, [bound], COMPARE_COLOR);
+        
         }
-        if (bound !== begin)
-            setLinesColorAsync(lines, [begin], PRIMARY_COLOR, 0);
-        begin++;
+        if (bound !== j)
+            setLinesColorAsync(lines, [j], PRIMARY_COLOR, 0);
     }
-    swapArr(ARRAY_FOR_SORTING, bound, begin);
-    await swapHeightLines(lines, bound, begin);
-    await setLinesColorAsync(lines, [begin], PRIMARY_COLOR);
+    swapArr(ARRAY_FOR_SORTING, bound, high);
+    await swapHeightLines(lines, bound, high); // swap bound with pivot
+
+    await setLinesColorAsync(lines, [high], PRIMARY_COLOR);
     await setLinesColorAsync(lines, [bound], SORTED_COLOR);
 
-    await quickSortImpl(lines, start, bound-1);
-    await quickSortImpl(lines, bound+1, end);
+    return bound;
+
 }

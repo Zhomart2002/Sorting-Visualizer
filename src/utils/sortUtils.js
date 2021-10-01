@@ -1,5 +1,5 @@
 let SPEED_TIME_MS = 250;
-let SORT_METHOD = "Quick";
+let SORT_METHOD = "Bubble";
 let ARRAY_FOR_SORTING = [];
 
 function setSpeed(speed) {
