@@ -5,21 +5,23 @@ import {
     MAX_HEIGHT,
     PRIMARY_COLOR,
     setLinesColor,
-    LINE_NUMBER
+    LINE_NUMBER,
+    isLinesSorted,
+    setLinesStatus
 } from "../utils/lineUtils";
-
-import { setArrayForSorting} from "../utils/sortUtils";
 
 import sort from "../utils/sort";
 
 export default function GenerateSortButton({ setLineValues }) {
     const generateArray = React.useCallback(() => {
-        const newArray = generateNewArray(LINE_NUMBER, MIN_HEIGHT, MAX_HEIGHT);
+        let newArray = generateNewArray(LINE_NUMBER, MIN_HEIGHT, MAX_HEIGHT);
         setLineValues(newArray);
-        setArrayForSorting(newArray);
 
-        const lines = document.getElementById("linesContainer").children;
-        setLinesColor(lines, 0, lines.length - 1, PRIMARY_COLOR);
+        if(isLinesSorted){
+            const lines = document.getElementById("linesContainer").children;
+            setLinesColor(lines, 0, lines.length - 1, PRIMARY_COLOR);
+            setLinesStatus(false);
+        }
     }, [setLineValues]);
 
     return (

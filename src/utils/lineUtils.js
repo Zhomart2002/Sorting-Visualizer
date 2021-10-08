@@ -1,6 +1,6 @@
 import { sleep } from "./sortUtils";
 
-const MIN_HEIGHT = 5;
+const MIN_HEIGHT = 15;
 const MAX_HEIGHT = 550;
 let LINE_NUMBER = 50;
 
@@ -9,6 +9,7 @@ const COMPARE_COLOR = "rgba(78, 216, 96, 0.8)";
 const SWAP_COLOR = "rgba(214, 29, 29, 0.8)";
 const SORTED_COLOR = "rgba(169, 92, 232, 0.8)";
 const PIVOT_COLOR = "rgb(213, 241, 88)";
+let isLinesSorted = false;
 
 function setLineNumber(lineNumber) {
     LINE_NUMBER = lineNumber;
@@ -30,12 +31,20 @@ function swapArr(arr, i, j) {
 }
 
 async function swapHeightLines(lines, i, j) {
+
     await setLinesColorAsync(lines, [i, j], SWAP_COLOR);
-    const temp = lines[i].style.height;
+
+    const tempHeight = lines[i].style.height;
     lines[i].style.height = lines[j].style.height;
-    lines[j].style.height = temp;
+    lines[j].style.height = tempHeight;
+
     await sleep();
+
     await setLinesColorAsync(lines, [i, j], COMPARE_COLOR);
+}
+
+function setLinesStatus(value){
+    isLinesSorted = value;
 }
 
 export {
@@ -52,4 +61,6 @@ export {
     swapArr,
     swapHeightLines,
     setLinesColor,
+    isLinesSorted,
+    setLinesStatus
 };

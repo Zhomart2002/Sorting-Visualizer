@@ -1,6 +1,14 @@
 let SPEED_TIME_MS = 250;
-let SORT_METHOD = "Bubble";
+let SORT_METHOD = "Bubble Sort";
 let ARRAY_FOR_SORTING = [];
+const sortTypes = [
+    "Bubble Sort",
+    "Insertion Sort",
+    "Selection Sort",
+    "Merge Sort",
+    "Quick Sort",
+    "Quick Sort(2 pivot)"
+];
 
 function setSpeed(speed) {
     SPEED_TIME_MS = speed;
@@ -10,9 +18,11 @@ function setSortMethod(sortMethod) {
     SORT_METHOD = sortMethod;
 }
 
+function setArrayForSorting(lines) {
+    ARRAY_FOR_SORTING = [];
 
-function setArrayForSorting(arr) {
-    ARRAY_FOR_SORTING = [...arr];
+    for(let line of lines)
+        ARRAY_FOR_SORTING.push(parseInt(line.style.height));
 }
 
 function sleep(ms) {
@@ -34,6 +44,7 @@ function DisEnAbleElements() {
 }
 
 export {
+    sortTypes,
     SPEED_TIME_MS,
     setSpeed,
     SORT_METHOD,
@@ -41,5 +52,5 @@ export {
     ARRAY_FOR_SORTING,
     setArrayForSorting,
     DisEnAbleElements,
-    sleep
+    sleep,
 };
