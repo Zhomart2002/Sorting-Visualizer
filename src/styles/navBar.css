@@ -1,15 +1,17 @@
 .navBar {
     margin: 0;
-    padding: 5px 3px;
-    background-color: rgb(94, 187, 245);
+    background-color: #1f2c33;
+    border-color: #1f2c33;
     display: flex;
     align-items: center;
-    justify-content: center;
+    height: 70px;
+    color: rgb(199, 190, 190);
+    font-size: 17px;
 }
 
 .sliders {
-    display: flex;
-    margin: 0 5px
+    padding: 2px 5px;
+    margin: 0 5px;
 }
 
 .slider-block {
@@ -22,16 +24,79 @@
 .slider-name {
     margin-right: 3px;
     padding: 3px;
+    width: 92px;
+    text-align: center;
 }
 
-.selectdiv {
+.slider {
+    width: 130px;
+}
+
+.slider-value {
+    color: rgb(228, 226, 226);
+    font-size: 15px;
+    text-align: center;
+    padding: 3px;
+    margin: 0 3px;
+    width: 40px;
+    border: none;
+    outline: none;
+}
+
+.headerDivider {
+    display: inline-block;
+    background-color: rgb(255, 200, 80);
+    height: 30px;
+    width: 3px;
+    margin: 0 10px;
+}
+
+.buttons {
+    padding: 3px;
+    margin: 0 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3px;
-    margin: 0 5px;
+    width: 250px;
 }
 
-#selector{
-    margin: 0 5px;
+.btn {
+    width: 90px;
+    height: 30px;
+    margin: 0 10px;
+    appearance: button;
+    backface-visibility: hidden;
+    border-radius: 6px;
+    border-width: 0;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    font-size: 14px;
+    background-color: rgb(255, 200, 80);
+    color: black;
+    font-weight: 700;
+}
+
+.btn:disabled {
+    cursor: default;
+}
+
+.sortName {
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sortName:last-of-type {
+    color: rgb(105, 104, 104);
+    cursor: default;
+}
+
+.sortName:hover {
+    color: blanchedalmond;
+}
+
+.sortName:last-of-type:hover {
+    color: rgb(105, 104, 104);
 }

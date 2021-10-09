@@ -2,39 +2,29 @@ import React from "react";
 import { setSpeed } from "../../utils/sortManager";
 
 export default function SpeedSlider() {
+
     return (
         <div className="slider-block">
             <span className="slider-name">Delay(ms)</span>
             <input
-                className="slider speed-slider"
+                className="slider"
                 type="range"
                 min="0"
                 max="1000"
                 step="10"
                 defaultValue="250"
                 onChange={(event) => {
-                    const val = event.target.value;
-                    if (val >= 0 && val <= 1000){
-                        event.target.nextSibling.value = val;
-                        setSpeed(val);
-                    }
+                    let val = event.target.value;
+                    setSpeed(val);
+                    
+                    if (val === '1000')
+                        val = '1s';
+                    else
+                        val += 'ms';
+                    event.target.nextElementSibling.innerText = val;
                 }}
             />
-            <input
-                type="number"
-                id="speed_value"
-                defaultValue="250"
-                min="0"
-                max="1000"
-                step="10"
-                onChange={(event) => {
-                    const val = event.target.value;
-                    if (val >= 0 && val <= 1000){
-                        event.target.previousSibling.value = val;
-                        setSpeed(val);
-                    }
-                }}
-            />
+            <div className="slider-value">250ms</div>
         </div>
     );
 }

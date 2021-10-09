@@ -9,6 +9,7 @@ export default React.memo(function NavBar({setLineValues}) {
     return (
         <div className="navBar">
             <Sliders />
+            <div class="headerDivider"></div>
             <SortMenu />
             <Buttons setLineValues={setLineValues}/>
         </div>

@@ -7,7 +7,7 @@ const sortTypes = [
     "Selection Sort",
     "Merge Sort",
     "Quick Sort",
-    "Quick Sort(2 pivot)",
+    "Quick Sort (dual pivot)",
 ];
 
 function setSpeed(speed) {

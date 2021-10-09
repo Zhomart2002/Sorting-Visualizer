@@ -9,6 +9,10 @@ body,
     min-height: 705px;
     padding: 0;
     margin: 0;
+    height: 100%;
+}
+
+html{
     height: 99.5%;
 }
 
