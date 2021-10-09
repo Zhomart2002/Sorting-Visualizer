@@ -1,5 +1,5 @@
 import React from "react";
-import { setLineNumber } from "../utils/lineUtils";
+import { setLineNumber } from "../../utils/lineManager";
 
 export default function NumberSlider() {
     return (
@@ -17,7 +17,7 @@ export default function NumberSlider() {
                     if (val >= 2 && val <= 280) {
                         event.target.nextSibling.value = val;
                         setLineNumber(val);
-                        document.getElementById('generate-btn').click();
+                        document.getElementById("generate-btn").click();
                     }
                 }}
             />
@@ -33,7 +33,7 @@ export default function NumberSlider() {
                     if (val >= 2 && val <= 280) {
                         event.target.previousSibling.value = val;
                         setLineNumber(val);
-                        document.getElementById('generate-btn').click();
+                        document.getElementById("generate-btn").click();
                     }
                 }}
             />

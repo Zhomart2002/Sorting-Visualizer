@@ -1,8 +1,7 @@
 export default function generateNewArray(len, min, max) {
-    const arr = []
+    const arr = [];
 
-    for (let i = 0; i < len; i++)
-        arr.push(randomNumber(min, max));
+    for (let i = 0; i < len; i++) arr.push(randomNumber(min, max));
 
     return arr;
 }

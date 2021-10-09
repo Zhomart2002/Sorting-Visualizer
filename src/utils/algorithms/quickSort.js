@@ -6,18 +6,18 @@ import {
     setLinesColorAsync,
     swapArr,
     swapHeightLines
-} from "../lineUtils";
+} from "../lineManager";
 
-import { ARRAY_FOR_SORTING, DisEnAbleElements} from "../sortUtils";
+import { ARRAY_FOR_SORTING, DisEnAbleElements } from "../sortManager";
 
-export default async function quickSort(lines){
+export default async function quickSort(lines) {
     DisEnAbleElements();
-    await quickSortImpl(lines, 0, lines.length-1);
+    await quickSortImpl(lines, 0, lines.length - 1);
     DisEnAbleElements();
 }
 
-async function quickSortImpl(lines, low, high){
-	if (low >= high) {
+async function quickSortImpl(lines, low, high) {
+    if (low >= high) {
         if (low === high)
             setLinesColorAsync(lines, [high], SORTED_COLOR);
         return;
@@ -25,27 +25,27 @@ async function quickSortImpl(lines, low, high){
 
     const pi = await partition(lines, low, high);
 
-    await quickSortImpl(lines, low, pi-1);
-    await quickSortImpl(lines, pi+1, high);
+    await quickSortImpl(lines, low, pi - 1);
+    await quickSortImpl(lines, pi + 1, high);
 }
 
-async function partition(lines, low, high){
+async function partition(lines, low, high) {
     const pivot = ARRAY_FOR_SORTING[high];
     setLinesColorAsync(lines, [high], PIVOT_COLOR, 0); // pivot
-    
-    let bound = low;
-    await setLinesColorAsync(lines, [low], COMPARE_COLOR); // bound
 
-    for(let j = low; j < high; j++){
-        await setLinesColorAsync(lines, [j], COMPARE_COLOR);
-        if (pivot >= ARRAY_FOR_SORTING[j]){
+    let bound = low;
+
+    for (let j = low; j < high; j++) {
+        await setLinesColorAsync(lines, [j], COMPARE_COLOR); // bound
+        
+        if (pivot >= ARRAY_FOR_SORTING[j]) {
             swapArr(ARRAY_FOR_SORTING, bound, j);
             await swapHeightLines(lines, bound, j);
 
             setLinesColorAsync(lines, [bound], PRIMARY_COLOR, 0);
             bound++;
             setLinesColorAsync(lines, [bound], COMPARE_COLOR);
-        
+
         }
         if (bound !== j)
             setLinesColorAsync(lines, [j], PRIMARY_COLOR, 0);

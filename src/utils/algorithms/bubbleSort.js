@@ -5,9 +5,9 @@ import {
     setLinesColorAsync,
     swapArr,
     swapHeightLines
-} from "../lineUtils";
+} from "../lineManager";
 
-import { ARRAY_FOR_SORTING, DisEnAbleElements} from "../sortUtils";
+import { ARRAY_FOR_SORTING, DisEnAbleElements} from "../sortManager";
 
 export default async function bubbleSort(lines) {
     DisEnAbleElements();

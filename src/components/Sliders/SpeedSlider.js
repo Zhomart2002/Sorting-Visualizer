@@ -1,5 +1,5 @@
 import React from "react";
-import { setSpeed } from "../utils/sortUtils";
+import { setSpeed } from "../../utils/sortManager";
 
 export default function SpeedSlider() {
     return (

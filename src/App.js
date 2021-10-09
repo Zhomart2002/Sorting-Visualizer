@@ -1,5 +1,5 @@
 import React from "react";
-import SortVizualizer from "./SortVizualizer";
+import SortVizualizer from "./components/SortVizualizer";
 import NavBar from "./components/NavBar";
 
 function App() {

@@ -5,9 +5,9 @@ import {
     setLinesColor,
     SORTED_COLOR,
     SWAP_COLOR,
-} from "../lineUtils";
+} from "../lineManager";
 
-import { ARRAY_FOR_SORTING, DisEnAbleElements} from "../sortUtils";
+import { ARRAY_FOR_SORTING, DisEnAbleElements } from "../sortManager";
 
 export default async function mergeSort(lines) {
     DisEnAbleElements();
@@ -33,34 +33,34 @@ async function merge(arr, begin, middle, end, lines) {
     const right = new Array(lenR);
 
     for (let i = 0; i < lenL; i++) left[i] = arr[begin + i];
-
     for (let i = 0; i < lenR; i++) right[i] = arr[middle + 1 + i];
 
-    let i = 0,
-        j = 0,
-        current = begin;
+    let i = 0, j = 0, current = begin;
 
     const isLastStep = lenL + lenR === arr.length;
 
     while (i < lenL && j < lenR) {
+
         await setLinesColorAsync(lines, [current, middle + 1 + j], COMPARE_COLOR);
+
         if (left[i] <= right[j]) {
             setLinesColorAsync(lines, [current], isLastStep ? SORTED_COLOR : PRIMARY_COLOR, 0);
             arr[current] = left[i++];
         } else {
             await setLinesColorAsync(lines, [current, middle + 1 + j], SWAP_COLOR);
+
             setLinesColorAsync(lines, [middle + 1 + j], PRIMARY_COLOR, 0);
             insertWithShifting(lines, middle + 1 + j, lenL - i);
-            await setLinesColorAsync(lines, [current+1], SWAP_COLOR);
-            setLinesColorAsync(lines, [current+1], PRIMARY_COLOR);
-
+            await setLinesColorAsync(lines, [current + 1], SWAP_COLOR);
+            
+            setLinesColorAsync(lines, [current + 1], PRIMARY_COLOR);
             arr[current] = right[j++];
         }
-        await setLinesColorAsync(lines, [current], isLastStep ? SORTED_COLOR : PRIMARY_COLOR, 0);        
+        await setLinesColorAsync(lines, [current], isLastStep ? SORTED_COLOR : PRIMARY_COLOR, 0);
         current++;
     }
-    
-    if(middle + 1 + j < arr.length)
+
+    if (middle + 1 + j < arr.length)
         setLinesColorAsync(lines, [middle + 1 + j], PRIMARY_COLOR, 0);
 
     if (isLastStep)
@@ -73,12 +73,15 @@ async function merge(arr, begin, middle, end, lines) {
         arr[current++] = right[j++];
 }
 
-function insertWithShifting(lines, index, shiftLength){
+function insertWithShifting(lines, index, shiftLength) {
     const elHeight = lines[index].style.height;
+    const elText = lines[index].innerText;
 
-    while(shiftLength-- > 0){
+    while (shiftLength-- > 0) {
+        lines[index].innerText = lines[index - 1].innerText;
         lines[index].style.height = lines[--index].style.height;
     }
 
+    lines[index].innerText = elText;
     lines[index].style.height = elHeight;
 }

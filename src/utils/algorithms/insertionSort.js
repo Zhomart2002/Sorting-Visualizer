@@ -5,9 +5,9 @@ import {
     setLinesColorAsync,
     setLinesColor,
     SORTED_COLOR,
-} from "../lineUtils";
+} from "../lineManager";
 
-import { ARRAY_FOR_SORTING, DisEnAbleElements, sleep} from "../sortUtils";
+import { ARRAY_FOR_SORTING, DisEnAbleElements, sleep} from "../sortManager";
 
 export default async function insertionSort(lines) {
     const len = ARRAY_FOR_SORTING.length;
@@ -26,9 +26,14 @@ export default async function insertionSort(lines) {
             
             await setLinesColorAsync(lines, [j], COMPARE_COLOR);
 
-            const temp = lines[j+1].style.height;
+            const tempHeight = lines[j+1].style.height;
             lines[j+1].style.height = lines[j].style.height;
-            lines[j].style.height = temp;
+            lines[j].style.height = tempHeight;
+
+            const tempText = lines[j+1].innerText;
+            lines[j+1].innerText = lines[j].innerText;
+            lines[j].innerText = tempText;
+
             await sleep();
 
             setLinesColorAsync(lines, [j + 1], PRIMARY_COLOR);

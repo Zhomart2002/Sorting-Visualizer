@@ -1,7 +1,7 @@
 import React from "react";
-import SortMenu from "./SortMenu";
-import GenerateSortButton from "./GenerateSortButton";
-import Sliders from "./Sliders";
+import SortMenu from "./SortChooser/SortMenu";
+import Buttons from "./SortChooser/Buttons";
+import Sliders from "./Sliders/Sliders";
 
 import "../styles/navBar.css";
 
@@ -10,7 +10,7 @@ export default React.memo(function NavBar({setLineValues}) {
         <div className="navBar">
             <Sliders />
             <SortMenu />
-            <GenerateSortButton setLineValues={setLineValues}/>
+            <Buttons setLineValues={setLineValues}/>
         </div>
     );
 });

@@ -4,8 +4,8 @@ import insertionSort from "./algorithms/insertionSort";
 import mergeSort from "./algorithms/mergeSort";
 import selectionSort from "./algorithms/selectionSort";
 
-import { SORT_METHOD, setArrayForSorting } from "./sortUtils";
-import { setLinesStatus } from "./lineUtils";
+import { SORT_METHOD, setArrayForSorting } from "./sortManager";
+import { setLinesStatus } from "./lineManager";
 
 export default function sort(lines){
     setArrayForSorting(lines);
