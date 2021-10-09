@@ -1,5 +1,6 @@
 import React from "react";
 import { sortTypes, setSortMethod } from "../../utils/sortManager";
+import SortType from "./SortType";
 
 function selectSortType(event) {
     const val = event.target.innerText;
@@ -21,10 +22,7 @@ export default function SortMenu() {
     return (
         <React.Fragment>
             {sortTypes.map((sortName, idx) => (
-                <React.Fragment>
-                    <span className="sortName" key={idx} onClick={(event) => selectSortType(event)}>{sortName}</span>
-                    <div className="headerDivider"></div>
-                </React.Fragment>
+                <SortType key={idx} name={sortName} clickHandler={selectSortType}/>
             ))}
         </React.Fragment>
     );
