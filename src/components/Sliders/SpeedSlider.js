@@ -12,7 +12,7 @@ export default function SpeedSlider() {
                 min="0"
                 max="1000"
                 step="10"
-                defaultValue="250"
+                defaultValue="10"
                 onChange={(event) => {
                     let val = event.target.value;
                     setSpeed(val);
@@ -24,7 +24,7 @@ export default function SpeedSlider() {
                     event.target.nextElementSibling.innerText = val;
                 }}
             />
-            <div className="slider-value">250ms</div>
+            <div className="slider-value">10ms</div>
         </div>
     );
 }

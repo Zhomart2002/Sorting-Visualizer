@@ -1,4 +1,4 @@
-let DELAY_MS = 250;
+let DELAY_MS = 10;
 let SORT_METHOD = "Bubble Sort";
 let ARRAY_FOR_SORTING = [];
 const sortTypes = [
