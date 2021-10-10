@@ -9,7 +9,7 @@ export default function NumberSlider() {
                 className="slider num-slider"
                 type="range"
                 min="2"
-                max="280"
+                max="200"
                 step="1"
                 defaultValue="50"
                 onChange={(event) => {

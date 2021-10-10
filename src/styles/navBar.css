@@ -1,17 +1,19 @@
 .navBar {
+    min-width: max-content;
+    height: 70px;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #1f2c33;
     border-color: #1f2c33;
-    display: flex;
-    align-items: center;
-    height: 70px;
     color: rgb(199, 190, 190);
     font-size: 17px;
 }
 
 .sliders {
     padding: 2px 5px;
-    margin: 0 5px;
+    margin: 0 3px;
 }
 
 .slider-block {
@@ -24,7 +26,7 @@
 .slider-name {
     margin-right: 3px;
     padding: 3px;
-    width: 92px;
+    width: 93px;
     text-align: center;
 }
 

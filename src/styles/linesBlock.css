@@ -1,24 +1,18 @@
-#linesContainer{
-    max-width: 1520px;
+.main-container{
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    position: absolute;
-    bottom: 0;
-    left: 450px; 
-    right: 450px; 
+}
+
+#linesContainer{
+    display: flex;
+    justify-content: center;
 }
 
 .barLine{
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    min-width: 2px;
     max-width: 80px;
+    min-width: 2px;
     margin-right: 2px;
+    padding-top: 20px;
+    text-align: center;
     background-color: rgba(66, 134, 244, 0.8);
-}
-
-.buttons{
-    
 }
